@@ -10,21 +10,21 @@ module.exports = (sequelize, DataTypes) => {
       articles.hasOne(models.vehicle)
       articles.hasOne(models.estate)
       articles.hasOne(models.various)
-      articles.hasMany(models.order)   
+      // articles.hasMany(models.order)
 
     }
   }
   articles.init({
-    id_articles: {
-      type:DataTypes.INTEGER,
+    id: {
+      type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
       allowNull: false,
     },
-  }, 
-  {
-    sequelize,
-    modelName: 'articles',
-  });
+  },
+    {
+      sequelize,
+      modelName: 'articles',
+    });
   return articles;
 };

@@ -5,24 +5,24 @@ const { Op } = require("sequelize");
 const res = require('express/lib/response');
 
 
-const estatesController = {};
+const variousController = {};
 
-// Traer todos los inmuebles
+// Traer todos los objetos varios
 
-estatesController.getAll = (req, res) => {
-  sequelize.query('SELECT id, type, photo, location, surface, conditions, info, createdAt, updatedAt')
+variousController.getAll = (req, res) => {
+  sequelize.query('SELECT id, type, photo, conditions, info, createdAt, updatedAt')
     .then(data => {
       res.send(data)
     })
 };
 
 
-// Traer inmueble por tipo:
+// Traer objetos varios por tipo:
 
-estatesController.getEstateByType = async (req, res) => {
+variousController.getVariousByType = async (req, res) => {
   try {
     let { type } = req.params;
-    let res = await estate.findOne({
+    let res = await various.findOne({
       where: {
         type: type,
       }
@@ -35,18 +35,16 @@ estatesController.getEstateByType = async (req, res) => {
 }
 /*
 
-// Registro de un nuevo inmueble
+// Registro de un nuevo objeto
 
-estatesController.registerEstate = (req, res) => {
+variousController.registerVarious = (req, res) => {
 
   let type = req.body.type;
   let photo = req.body.photo;  
-  let location = req.body.location;
-  let surface = req.body.surface;
   let conditions = req.body.conditions;
   let info = req.body.info;
 
-  estate.findAll({
+  various.findAll({
     where: {
       [Op.or]: [{
           id: {
@@ -55,16 +53,14 @@ estatesController.registerEstate = (req, res) => {
   })
   .then(duplicateInfo => {
     if (duplicateInfo == 0) {
-      estate.create({
+      various.create({
         type: type,
         photo: photo,
-        location: location,
-        surface: surface,
         conditions: conditions,
         info: info
       })
-      .then(estate => {
-        res.send(`Your ${estate.type} in ${estate.location} is now available for sale!`);
+      .then(various => {
+        res.send(`Your ${various.type} is now available for sale!`);
       })
         .catch((error) => {
           res.send(error);
@@ -78,20 +74,20 @@ estatesController.registerEstate = (req, res) => {
 };
 
 
-// Borrar un inmueble
+// Borrar un vehiculo
 
-estatesController.deleteById = (req, res) => {
+variousController.deleteById = (req, res) => {
   let id = req.params.id;
 
   try {
-    estate.destroy({
+    various.destroy({
       where: { id: id },
       truncate: false
     })
 
-      .then(estateDeleted => {
-        console.log(estateDeleted);
-        res.send(`The estate with the id: ${id} was deleted successfully`);
+      .then(variousDeleted => {
+        console.log(variousDeleted);
+        res.send(`The object with the id: ${id} was deleted successfully`);
       })
   }
   catch (error) {
@@ -99,4 +95,4 @@ estatesController.deleteById = (req, res) => {
   }
 };
 */
-module.exports = estatesController;
+module.exports = variousController;
