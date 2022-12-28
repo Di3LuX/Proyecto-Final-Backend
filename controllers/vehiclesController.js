@@ -1,4 +1,5 @@
 
+const { sequelize } = require("../models/index");
 const { send } = require('express/lib/response');
 const { Op } = require("sequelize");
 const res = require('express/lib/response');
