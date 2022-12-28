@@ -1,3 +1,4 @@
+
 <p align="center">
   <a href="" rel="">
 </p>
@@ -49,19 +50,19 @@ localhost:3000/users/register:
 
 {
   <br>
-  "username": "user1",<br>
-  "email": "email@mail.com",<br>
+  "username": "testUser",<br>
+  "email": "tesTmail@mail.com",<br>
   "password": "password",<br>
-  "name": "name1",<br>
-  "location": "location1"<br>
+  "name": "testName",<br>
+  "location": "testLocation"<br>
 }
 
 localhost:3000/users/login:
 
 {
   <br>
-  "email": "xkey@gandia.es",<br>
-  "password": "1234"<br>
+  "email": "tesTmail@mail.com",<br>
+  "password": "password"<br>
 }
 
 ## 🚀 Deployment <a name = "deployment"></a>
