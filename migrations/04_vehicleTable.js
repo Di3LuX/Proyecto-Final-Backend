@@ -11,6 +11,15 @@ module.exports = {
         autoIncrement: true,
         type: Sequelize.INTEGER
       },
+      id_articles: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'articles',
+          key: 'id_articles'
+        },
+        onDelete: 'cascade',
+        onUpdate: 'cascade'
+      },
       type: {
         allowNull: false,
         type: Sequelize.STRING
