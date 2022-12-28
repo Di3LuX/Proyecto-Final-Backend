@@ -24,6 +24,6 @@ app.use(router);
 
 db.then(() => {
 
-	app.listen(PORT, () => console.log(`Servidor en el puerto: ${PORT}. Espero que tengas un buen dia!`.rainbow));
+	app.listen(PORT, () => console.log(`Database online, oiled machinery, all systems functionals in port ${PORT}. Have a nice day!`.rainbow));
 })
 	.catch((err) => console.log(err.message));   
