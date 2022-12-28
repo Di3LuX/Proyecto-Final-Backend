@@ -1,17 +1,16 @@
 
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
+
   class articles extends Model {
 
     static associate(models) {
       articles.hasOne(models.vehicle)
       articles.hasOne(models.estate)
       articles.hasOne(models.various)
-      // articles.hasMany(models.order)
-
+      articles.hasMany(models.order)
     }
   }
   articles.init({
