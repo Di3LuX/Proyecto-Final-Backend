@@ -13,11 +13,11 @@ module.exports = {
       date_of_order: {
         type: Sequelize.DATE
       },
-      id_user: {
+      user_id: {
         type: Sequelize.INTEGER,
         references: {
           model: 'users',
-          key: 'id_user'
+          key: 'id'
         },
         onDelete: 'cascade',
         onUpdate: 'cascade'

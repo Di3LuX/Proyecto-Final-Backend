@@ -5,20 +5,20 @@ const authBearerMiddleware = require("../middlewares/auth")
 
 const variousController = require("../controllers/variousController");
 
-//Traer todos los inmuebles
+//Traer todos los objetos
 router.get("/", authBearerMiddleware, variousController.getAll);
 
-//Traer inmueble por tipo
+//Traer objetos por tipo
 router.get("/type/:type", authBearerMiddleware, variousController.getVariousByType);
 
 /*
-//Registrar un nuevo inmueble
+//Registrar un nuevo objeto
 router.post("/", authBearerMiddleware, variousController.registerVarious);
 
-//Borrar un inmueble por su id
+//Borrar un objeto por su id
 router.delete("/:id", authBearerMiddleware, variousController.deleteById);
 
-//Borrar todos los inmuebles
+//Borrar todos los objetos
 router.delete("/", authBearerMiddleware, variousController.deleteAll);
 */
 module.exports = router;

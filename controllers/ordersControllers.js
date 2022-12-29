@@ -3,7 +3,7 @@ const models = require("../models/index");
 const ordersController = {};
 const jsonwebtoken = require("jsonwebtoken");
 const { sequelize } = require("../models/index");
-
+/*
 // Creamos una nueva orden de compra. Hay que pasarle el body, que será el article
 
 ordersController.newOrder = async (req, res) => {
@@ -15,8 +15,8 @@ ordersController.newOrder = async (req, res) => {
   try {
     await models.order.create({
       date_of_order: actualDate,
-      userIdUser: payload.id_user,
-      articleIdArticles: data.article,
+      user_id: payload.user_id,
+      article_id: data.article,
     }),
       res.send(`Your purchase was successful`);
   } catch (error) {
@@ -33,8 +33,8 @@ ordersController.modifyOrder = async (req, res) => {
   let data = req.body;
   try {
     let res = await models.order.update({
-      articleIdArticles: data.newArticle,
-    }, { where: { userIdUser: payload.id_user, articleIdArticles: data.oldArticle } })
+      article_id: data.newArticle,
+    }, { where: { user_id: payload.user_id, article_id: data.oldArticle } })
     res.send(`Your previous order ${data.oldArticle}, has been updated to ${data.newArticle}`)
   } catch (error) {
     res.send(error)
@@ -48,10 +48,10 @@ ordersController.myOrder = async (req, res) => {
   const [strategy, jwt] = authorization.split(" ");
   const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET);
   try {
-    let id = payload.id_user;
+    let id = payload.user_id;
     let res = await models.order.findAll({
       where: {
-        userIdUser: id,
+        user_id: id,
       },
     });
     if (res === []) {
@@ -62,7 +62,7 @@ ordersController.myOrder = async (req, res) => {
   }
 }
 
-/*
+
 ordersController.returnOrder = async (req, res) => {
   const { authorization } = req.headers;
   const [strategy, jwt] = authorization.split(" ");
@@ -135,7 +135,7 @@ ordersController.myVariousOrder = async (req, res) => {
     res.send(error)
   }
 }
-*/
+
 
 // Mostramos todos los pedidos (solo el admin lo puede hacer)
 
@@ -147,4 +147,5 @@ ordersController.allOrders = async (req, res) => {
     res.send(error)
   }
 }
+*/
 module.exports = ordersController;

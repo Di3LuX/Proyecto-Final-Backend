@@ -10,9 +10,9 @@ module.exports = (req, res, next) => {
   } else {
 
     let token = req.headers.authorization.split(" ")[1];
-    jwt.verify(token, authConfig.secret, (err, decoded) => {
-      if (err) {
-        res.status(500).json({ msg: "Problem with decoding", err });
+    jwt.verify(token, authConfig.secret, (error, decoded) => {
+      if (error) {
+        res.status(500).json({ msg: "Problem with decoding", error });
       } else {
 
         user.findByPk(decoded.user.id, { include: "roles" }).then(user => {

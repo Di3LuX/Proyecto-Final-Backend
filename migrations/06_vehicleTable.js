@@ -11,11 +11,11 @@ module.exports = {
         autoIncrement: true,
         type: Sequelize.INTEGER
       },
-      id_articles: {
+      articles_id: {
         type: Sequelize.INTEGER,
         references: {
           model: 'articles',
-          key: 'id_articles'
+          key: 'id'
         },
         onDelete: 'cascade',
         onUpdate: 'cascade'

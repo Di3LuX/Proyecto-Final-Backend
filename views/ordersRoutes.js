@@ -13,7 +13,6 @@ router.put('/modifyorder', authBearerMiddleware, ordersController.modifyOrder);
 // Traemos el pedido realizado por el usuario
 router.get('/myorder', authBearerMiddleware, ordersController.myOrder);
 
-
 // Devolver una orden
 router.patch('/myorder/return', authBearerMiddleware, ordersController.returnOrder);
 
