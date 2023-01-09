@@ -10,7 +10,7 @@ const estatesController = {};
 // Traer todos los inmuebles
 
 estatesController.getAll = (req, res) => {
-  sequelize.query('SELECT id, type, photo, location, surface, conditions, info, createdAt, updatedAt')
+  sequelize.query('SELECT id, type, photo, location, surface, conditions, info, createdAt, updatedAt article_id FROM estates AS estate')
     .then(data => {
       res.send(data)
     })

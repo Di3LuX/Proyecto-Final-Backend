@@ -4,13 +4,15 @@ const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
 
-  class various extends Model {
+  class object extends Model {
 
     static associate(models) {
-      various.belongsTo(models.articles)
+      object.belongsTo(models.articles, {
+        foreignKey: 'article_id'
+      })
     }
   };
-  various.init({
+  object.init({
     type: DataTypes.STRING,
     photo: DataTypes.STRING,
     brand: DataTypes.STRING,
@@ -18,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     info: DataTypes.TEXT,
   }, {
     sequelize,
-    modelName: 'various',
+    modelName: 'object',
   });
-  return various;
+  return object;
 };

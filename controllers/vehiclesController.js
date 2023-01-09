@@ -3,36 +3,37 @@ const { sequelize } = require("../models/index");
 const { send } = require('express/lib/response');
 const { Op } = require("sequelize");
 const res = require('express/lib/response');
-
+const vehicle = require("../models/vehicle");
 
 const vehiclesController = {};
 
 // Traer todos los vehiculos
 
 vehiclesController.getAll = (req, res) => {
-  sequelize.query('SELECT id, type, photo, brand, model, manufacturing, registration, conditions, info, createdAt, updatedAt')
+  sequelize.query('SELECT id, articles_id, type, photo, brand, model, manufacturing, registration, conditions, info, createdAt, updatedAt article_id FROM vehicles AS vehicle')
     .then(data => {
       res.send(data)
     })
-};
-
+}
 
 // Traer vehiculo por tipo:
 
 vehiclesController.getVehicleByType = async (req, res) => {
   try {
     let { type } = req.params;
-    let res = await vehicle.findOne({
+    let res = await models.vehicle.findAll({
       where: {
-        type: type,
-      }
+        type: {
+          [Op.like]: `%${type}%`,
+        },
+      },
     });
-    res.status(200).send(res);
+    res.status(200).send(resp);
   } catch (error) {
-    console.error(error)
-    res.status(500).send(error);
+    res.send(error);
   }
-}
+};
+
 /*
 
 // Registro de un nuevo vehiculo
@@ -78,7 +79,6 @@ vehiclesController.registerVehicle = (req, res) => {
     res.send(error)
   });
 };
-
 
 // Borrar un vehiculo
 

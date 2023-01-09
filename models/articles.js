@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       articles.hasOne(models.vehicle)
       articles.hasOne(models.estate)
-      articles.hasOne(models.various)
+      articles.hasOne(models.object)
       articles.hasMany(models.order)
     }
   }

@@ -62,7 +62,7 @@ userController.login = (req, res) => {
     })
 }
 
-userController.modifyCurrentUser = async (req, res) => {
+userController.modify = async (req, res) => {
 
   const { authorization } = req.headers;
   const [jsonwebtoken] = authorization.split(" ");

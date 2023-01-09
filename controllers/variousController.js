@@ -10,7 +10,7 @@ const variousController = {};
 // Traer todos los objetos varios
 
 variousController.getAll = (req, res) => {
-  sequelize.query('SELECT id, type, photo, conditions, info, createdAt, updatedAt')
+  sequelize.query('SELECT id, type, photo, conditions, info, createdAt, updatedAt article_id FROM various AS object')
     .then(data => {
       res.send(data)
     })
