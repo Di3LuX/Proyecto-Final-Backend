@@ -6,7 +6,7 @@ module.exports = {
     await queryInterface.bulkInsert('vehicles', [
       {
         type: "Coche",
-        photo: "",
+        photo: "https://www.irmscher.com/media/catalog/category/62.jpg",
         brand: "Opel",
         model: "Astra",
         manufacturing: "1990-12-24",

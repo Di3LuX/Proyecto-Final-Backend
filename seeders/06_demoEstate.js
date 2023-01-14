@@ -6,7 +6,7 @@ module.exports = {
     await queryInterface.bulkInsert('estates', [
       {
         type: "Apartamento",
-        photo: "",
+        photo: "https://i.pinimg.com/originals/d7/0f/69/d70f69f1806a912e81861eeb4cbe2a9f.jpg",
         location: "Gandia/Playa",
         surface: 200,
         conditions: "Brand new",

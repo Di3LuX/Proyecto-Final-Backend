@@ -8,14 +8,16 @@ const cors = require("cors");
 const colors = require('colors');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-let corsOptions = {
-	origin: "*",
-	methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-	preflightContinue: false,
-	optionsSuccessStatus: 204
+let PORT = process.env.YOUR_PORT || process.env.PORT || 3000;
+
+var corsOptions = {
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+  optionsSuccessStatus: 204
 };
+
 
 app.use(morgan('combined', { stream: logger.stream }));
 app.use(express.json());

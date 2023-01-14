@@ -106,7 +106,7 @@ userController.findCurrentUser = async (req, res) => {
 
 // (Only Admin) Eliminacion de perfil de usuario
 
-userController.deleteUser = async (req, res) => {
+userController.delete = async (req, res) => {
   try {
     let userEmail = req.params.email;
     let resp = await models.user.destroy({

@@ -23,7 +23,7 @@ router.get("/", authBearerMiddleware, userController.findAll);
 router.get("/:id", authBearerMiddleware, userController.findCurrentUser);
 
 //Borrar usuario
-router.delete("/", authBearerMiddleware, userController.deleteUser);
+router.delete("/delete", authBearerMiddleware, userController.delete);
 */
 
 module.exports = router;
