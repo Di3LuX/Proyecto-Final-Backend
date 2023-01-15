@@ -3,15 +3,15 @@ const router = express.Router();
 const ordersController = require('../controllers/ordersControllers');
 const { authBearerMiddleware } = require("../middlewares/auth")
 
-/*
+// Traemos el pedido realizado por el usuario
+router.get('/myorder', authBearerMiddleware, ordersController.myOrder);
+
 // Crear una nueva orden.
 router.post('/neworder', authBearerMiddleware, ordersController.newOrder);
 
+/*
 // Modificar una orden ya existente.
 router.put('/modifyorder', authBearerMiddleware, ordersController.modifyOrder);
-
-// Traemos el pedido realizado por el usuario
-router.get('/myorder', authBearerMiddleware, ordersController.myOrder);
 
 // Devolver una orden
 router.patch('/myorder/return', authBearerMiddleware, ordersController.returnOrder);
