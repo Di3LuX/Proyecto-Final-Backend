@@ -1,9 +1,12 @@
+
 const { Op } = require("sequelize");
 const models = require("../models/index");
 const ordersController = {};
 const jsonwebtoken = require("jsonwebtoken");
 const { sequelize } = require("../models/index");
-/*
+const { orders } = require("../models/index");
+
+
 // Creamos una nueva orden de compra. Hay que pasarle el body, que será el article
 
 ordersController.newOrder = async (req, res) => {
@@ -45,8 +48,6 @@ ordersController.myOrder = async (req, res) => {
   }
 }
 
-/*
-
 // Modificamos una orden. Hay que pasarle el body, que sera el "nuevo articulo" y el "articulo viejo"
 
 ordersController.modifyOrder = async (req, res) => {
@@ -64,8 +65,6 @@ ordersController.modifyOrder = async (req, res) => {
   }
 }
 
-
-
 ordersController.returnOrder = async (req, res) => {
   const { authorization } = req.headers;
   const [strategy, jwt] = authorization.split(" ");
@@ -82,8 +81,7 @@ ordersController.returnOrder = async (req, res) => {
   }
 }
 
-
-
+/*
 ordersController.myVehicleOrder = async (req, res) => {
   const { authorization } = req.headers;
   const [strategy, jwt] = authorization.split(" ");
@@ -138,7 +136,7 @@ ordersController.myVariousOrder = async (req, res) => {
     res.send(error)
   }
 }
-
+*/
 
 // Mostramos todos los pedidos (solo el admin lo puede hacer)
 
@@ -150,5 +148,4 @@ ordersController.allOrders = async (req, res) => {
     res.send(error)
   }
 }
-*/
 module.exports = ordersController;

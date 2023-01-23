@@ -74,8 +74,9 @@ userController.modify = async (req, res) => {
   try {
     let data = req.body;
     let res = await models.user.update({
-      name: data.name,
       username: data.username,
+      name: data.name,
+      location: data.location,
     }, { where: { email: data.email } })
     res.send("Success in modifying")
   } catch (error) {
