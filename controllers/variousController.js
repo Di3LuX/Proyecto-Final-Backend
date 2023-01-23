@@ -3,6 +3,7 @@ const { sequelize } = require("../models/index");
 const { send } = require('express/lib/response');
 const { Op } = require("sequelize");
 const res = require('express/lib/response');
+const { various } = require("../models/index");
 
 
 const variousController = {};
@@ -33,8 +34,6 @@ variousController.getVariousByType = async (req, res) => {
     res.status(500).send(error);
   }
 }
-/*
-
 // Registro de un nuevo objeto
 
 variousController.registerVarious = (req, res) => {
@@ -72,6 +71,9 @@ variousController.registerVarious = (req, res) => {
     res.send(error)
   });
 };
+
+/*
+
 
 
 // Borrar un vehiculo

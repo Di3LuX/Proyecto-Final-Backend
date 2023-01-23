@@ -3,6 +3,7 @@ const { sequelize } = require("../models/index");
 const { send } = require('express/lib/response');
 const { Op } = require("sequelize");
 const res = require('express/lib/response');
+const { estates } = require("../models/index");
 
 
 const estatesController = {};
@@ -33,8 +34,6 @@ estatesController.getEstateByType = async (req, res) => {
     res.status(500).send(error);
   }
 }
-/*
-
 // Registro de un nuevo inmueble
 
 estatesController.registerEstate = (req, res) => {
@@ -76,6 +75,10 @@ estatesController.registerEstate = (req, res) => {
     res.send(error)
   });
 };
+
+
+/*
+
 
 
 // Borrar un inmueble

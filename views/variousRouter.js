@@ -11,9 +11,9 @@ router.get("/", authBearerMiddleware, variousController.getAll);
 //Traer objetos por tipo
 router.get("/type/:type", authBearerMiddleware, variousController.getVariousByType);
 
-/*
 //Registrar un nuevo objeto
 router.post("/", authBearerMiddleware, variousController.registerVarious);
+/*
 
 //Borrar un objeto por su id
 router.delete("/:id", authBearerMiddleware, variousController.deleteById);

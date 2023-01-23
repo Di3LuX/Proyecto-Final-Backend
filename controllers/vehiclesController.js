@@ -3,7 +3,7 @@ const { sequelize } = require("../models/index");
 const { send } = require('express/lib/response');
 const { Op } = require("sequelize");
 const res = require('express/lib/response');
-const vehicle = require("../models/vehicle");
+const { vehicle } = require("../models/index");
 
 const vehiclesController = {};
 
