@@ -7,9 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   class vehicle extends Model {
 
     static associate(models) {
-      vehicle.belongsTo(models.articles, {
-        foreignKey: 'article_id'
-      })
+      vehicle.belongsTo(models.articles)
     }
   };
   vehicle.init({

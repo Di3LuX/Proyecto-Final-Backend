@@ -10,7 +10,7 @@ const userController = {};
 userController.register = (req, res) => {
 
   let password = bcrypt.hashSync(req.body.password, 10);
-
+  
   user.create({
     username: req.body.username,
     email: req.body.email,

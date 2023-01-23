@@ -23,5 +23,14 @@ module.exports = (req, res, next) => {
 
     })
   }
-
+  const onlyAdmin = (req,res,next) =>{
+    const { authorization } = req.headers;
+    const [strategy, jwt] = authorization.split(" ");
+    const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET);
+    if (payload.rolIdRol === 1) {
+        next();
+      } else {
+        res.status(403).json({ message: "You are not authorized" });
+      }
+  }
 };

@@ -34,8 +34,6 @@ vehiclesController.getVehicleByType = async (req, res) => {
   }
 };
 
-/*
-
 // Registro de un nuevo vehiculo
 
 vehiclesController.registerVehicle = (req, res) => {
@@ -79,6 +77,33 @@ vehiclesController.registerVehicle = (req, res) => {
     res.send(error)
   });
 };
+vehiclesController.registerVehicle = (req, res) => {
+
+  let type = req.body.type;
+  let photo = req.body.photo;
+  let brand = req.body.brand;
+  let manufacturing = req.body.manufacturing;
+  let registration = req.body.registration;
+  let conditions = req.body.conditions;
+  let info = req.body.info;
+
+        vehicle.create({
+          type: type,
+          photo: photo,
+          brand: brand,
+          manufacturing: manufacturing,
+          registration: registration,
+          conditions: conditions,
+          info: info
+        })
+          .then(vehicle => {
+            res.send(`Your ${vehicle.type} with registration: ${vehicle.registration} is now available for sale!`);
+          })
+          .catch((error) => {
+            res.send(error);
+          });
+      }
+/*
 
 // Borrar un vehiculo
 

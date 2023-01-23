@@ -24,23 +24,6 @@ ordersController.newOrder = async (req, res) => {
   }
 }
 
-// Modificamos una orden. Hay que pasarle el body, que sera el "nuevo articulo" y el "articulo viejo"
-
-ordersController.modifyOrder = async (req, res) => {
-  const { authorization } = req.headers;
-  const [strategy, jwt] = authorization.split(" ");
-  const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET);
-  let data = req.body;
-  try {
-    let res = await models.order.update({
-      article_id: data.newArticle,
-    }, { where: { user_id: payload.user_id, article_id: data.oldArticle } })
-    res.send(`Your previous order ${data.oldArticle}, has been updated to ${data.newArticle}`)
-  } catch (error) {
-    res.send(error)
-  }
-}
-
 // Mostramos los pedidos hechos por el usuario.
 
 ordersController.myOrder = async (req, res) => {
@@ -61,6 +44,26 @@ ordersController.myOrder = async (req, res) => {
     res.send(error)
   }
 }
+
+/*
+
+// Modificamos una orden. Hay que pasarle el body, que sera el "nuevo articulo" y el "articulo viejo"
+
+ordersController.modifyOrder = async (req, res) => {
+  const { authorization } = req.headers;
+  const [strategy, jwt] = authorization.split(" ");
+  const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET);
+  let data = req.body;
+  try {
+    let res = await models.order.update({
+      article_id: data.newArticle,
+    }, { where: { user_id: payload.user_id, article_id: data.oldArticle } })
+    res.send(`Your previous order ${data.oldArticle}, has been updated to ${data.newArticle}`)
+  } catch (error) {
+    res.send(error)
+  }
+}
+
 
 
 ordersController.returnOrder = async (req, res) => {

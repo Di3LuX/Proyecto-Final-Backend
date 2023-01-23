@@ -9,11 +9,12 @@ const vehiclesController = require("../controllers/vehiclesController");
 router.get("/", vehiclesController.getAll);
 
 //Traer vehiculos por tipo
-router.get("/type/:type", authBearerMiddleware, vehiclesController.getVehicleByType);
+router.get("/type/:type", vehiclesController.getVehicleByType);
+
+//Registrar un nuevo vehiculo
+router.post("/", vehiclesController.registerVehicle);
 
 /*
-//Registrar un nuevo vehiculo
-router.post("/", authBearerMiddleware, vehiclesController.registerVehicle);
 
 //Borrar un vehiculo por su id
 router.delete("/:id", authBearerMiddleware, vehiclesController.deleteById);
