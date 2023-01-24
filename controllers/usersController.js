@@ -29,7 +29,7 @@ userController.register = (req, res) => {
       });
     })
     .catch(error => {
-      console.log(error);
+      console.log(error.message);
       res.status(500).json(`Hey loquet! ${error.message}`);
     });
 };
