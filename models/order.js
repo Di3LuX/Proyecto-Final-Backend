@@ -19,11 +19,23 @@ module.exports = (sequelize, DataTypes) => {
     },
     date_of_order: DataTypes.DATE,
 
-    userIdUser: {
+    user_id: {
       type: DataTypes.INTEGER,
       
         references: {
           model: 'users',
+          key: 'id'
+        },
+        onDelete: 'cascade',
+        onUpdate: 'cascade'
+      
+    },
+
+    artilce_id: {
+      type: DataTypes.INTEGER,
+      
+        references: {
+          model: 'articles',
           key: 'id'
         },
         onDelete: 'cascade',

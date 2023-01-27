@@ -6,10 +6,10 @@ const authBearerMiddleware = require("../middlewares/auth")
 const estatesController = require("../controllers/estatesController");
 
 //Traer todos los inmuebles
-router.get("/", authBearerMiddleware, estatesController.getAll);
+router.get("/", estatesController.getAll);
 
 //Traer inmueble por tipo
-router.get("/type/:type", authBearerMiddleware, estatesController.getEstateByType);
+router.get("/type/:type", estatesController.getEstateByType);
 
 //Registrar un nuevo inmueble
 router.post("/", authBearerMiddleware, estatesController.registerEstate);

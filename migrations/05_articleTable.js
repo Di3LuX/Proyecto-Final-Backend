@@ -10,7 +10,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-
+      article_id: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      user_id: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

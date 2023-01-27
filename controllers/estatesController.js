@@ -3,7 +3,7 @@ const { sequelize } = require("../models/index");
 const { send } = require('express/lib/response');
 const { Op } = require("sequelize");
 const res = require('express/lib/response');
-const { estates } = require("../models/index");
+const { estate } = require("../models/index");
 
 
 const estatesController = {};
@@ -11,7 +11,7 @@ const estatesController = {};
 // Traer todos los inmuebles
 
 estatesController.getAll = (req, res) => {
-  sequelize.query('SELECT id, type, photo, location, surface, conditions, info, createdAt, updatedAt article_id FROM estates AS estate')
+  sequelize.query('SELECT id, article_id, type, photo, location, surface, conditions, info, createdAt, updatedAt , article_id FROM estates AS estate')
     .then(data => {
       res.send(data)
     })

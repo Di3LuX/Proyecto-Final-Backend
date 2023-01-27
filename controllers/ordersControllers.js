@@ -19,7 +19,7 @@ ordersController.newOrder = async (req, res) => {
     await models.order.create({
       date_of_order: actualDate,
       user_id: payload.user_id,
-      article_id: data.article,
+      article_id: data.article_id,
     }),
       res.send(`Your purchase was successful`);
   } catch (error) {
@@ -74,7 +74,7 @@ ordersController.returnOrder = async (req, res) => {
   try {
     let res = await models.order.update({
       returned: true,
-    }, { where: { userIdUser: payload.id_user, id_order: data.id_order } })
+    }, { where: { user_id: payload.user_id, id_order: data.id_order } })
     res.send(`The content has been returned`)
   } catch (error) {
     res.send(error)
@@ -87,13 +87,13 @@ ordersController.myVehicleOrder = async (req, res) => {
   const [strategy, jwt] = authorization.split(" ");
   const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET);
   try {
-    let id = payload.id_user;
+    let id = payload.user_id;
     let res = await sequelize.query(
       `SELECT orders.date_of_order, orders.date_of_return, orders.id_order, series.title, series.summary, series.poster
         FROM articles
-        Join orders ON orders.ArticleIdArticles = articles.id_articles
-        Join series on series.articleIdArticles = articles.id_articles
-        WHERE orders.userIdUser = ${id} AND orders.returned = 0`, { type: sequelize.QueryTypes.SELECT }
+        Join orders ON orders.articles_id = articles.id_articles
+        Join series on series.articles_id = articles.id_articles
+        WHERE orders.user_id = ${id} AND orders.returned = 0`, { type: sequelize.QueryTypes.SELECT }
     )
     res.send(res);
   } catch (error) {
@@ -106,13 +106,13 @@ ordersController.myEstateOrder = async (req, res) => {
   const [strategy, jwt] = authorization.split(" ");
   const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET);
   try {
-    let id = payload.id_user;
+    let id = payload.user_id;
     let res = await sequelize.query(
       `SELECT orders.date_of_order, orders.date_of_return, orders.id_order, movies.title, movies.summary, movies.poster
         FROM articles
-        Join orders ON orders.ArticleIdArticles = articles.id_articles
-        Join movies on movies.articleIdArticles = articles.id_articles
-        WHERE orders.userIdUser = ${id} AND orders.returned = 0`, { type: sequelize.QueryTypes.SELECT });
+        Join orders ON orders.articles_id = articles.id_articles
+        Join movies on movies.articles_id = articles.id_articles
+        WHERE orders.user_id = ${id} AND orders.returned = 0`, { type: sequelize.QueryTypes.SELECT });
     res.send(res);
   } catch (error) {
     res.send(error)
@@ -124,13 +124,13 @@ ordersController.myVariousOrder = async (req, res) => {
   const [strategy, jwt] = authorization.split(" ");
   const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET);
   try {
-    let id = payload.id_user;
+    let id = payload.user_id;
     let res = await sequelize.query(
       `SELECT orders.date_of_order, orders.date_of_return, orders.id_order, movies.title, movies.summary, movies.poster
         FROM articles
-        Join orders ON orders.ArticleIdArticles = articles.id_articles
-        Join movies on movies.articleIdArticles = articles.id_articles
-        WHERE orders.userIdUser = ${id} AND orders.returned = 0`, { type: sequelize.QueryTypes.SELECT });
+        Join orders ON orders.articles_id = articles.id_articles
+        Join movies on movies.articles_id = articles.id_articles
+        WHERE orders.user_id = ${id} AND orders.returned = 0`, { type: sequelize.QueryTypes.SELECT });
     res.send(res);
   } catch (error) {
     res.send(error)

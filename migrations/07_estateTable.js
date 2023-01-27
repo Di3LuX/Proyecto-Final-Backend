@@ -11,7 +11,7 @@ module.exports = {
         autoIncrement: true,
         type: Sequelize.INTEGER
       },
-      articles_id: {
+      article_id: {
         type: Sequelize.INTEGER,
         references: {
           model: 'articles',

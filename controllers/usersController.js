@@ -15,7 +15,7 @@ userController.register = (req, res) => {
     username: req.body.username,
     email: req.body.email,
     password: password,
-    role_id: 3,
+    role_id: 2,
     name: req.body.name,
     location: req.body.location
   })
@@ -93,7 +93,7 @@ userController.findCurrentUser = async (req, res) => {
   const [ jsonwebtoken] = authorization.split(" ");
   const payload = jsonwebtoken.verify(jsonwebtoken, process.env.JWT_SECRET);
   try {
-    let id = payload.id_user;
+    let id = payload.user_id;
     let resp = await models.user.findAll({
       where: {
         id: id,

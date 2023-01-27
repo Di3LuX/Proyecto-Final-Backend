@@ -15,7 +15,6 @@ router.get("/type/:type", vehiclesController.getVehicleByType);
 router.post("/", vehiclesController.registerVehicle);
 
 /*
-
 //Borrar un vehiculo por su id
 router.delete("/:id", authBearerMiddleware, vehiclesController.deleteById);
 

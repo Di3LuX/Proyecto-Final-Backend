@@ -10,7 +10,7 @@ const vehiclesController = {};
 // Traer todos los vehiculos
 
 vehiclesController.getAll = (req, res) => {
-  sequelize.query('SELECT id, articles_id, type, photo, brand, model, manufacturing, registration, conditions, info, createdAt, updatedAt article_id FROM vehicles AS vehicle')
+  sequelize.query('SELECT id, article_id, type, photo, brand, model, manufacturing, registration, conditions, info, createdAt, updatedAt , article_id FROM vehicles AS vehicle')
     .then(data => {
       res.send(data)
     })
