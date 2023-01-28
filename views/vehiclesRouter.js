@@ -6,7 +6,7 @@ const authBearerMiddleware = require("../middlewares/auth")
 const vehiclesController = require("../controllers/vehiclesController");
 
 //Traer todos los vehiculos
-router.get("/", vehiclesController.getAll);
+router.get("/article/:id", vehiclesController.getAll);
 
 //Traer vehiculos por tipo
 router.get("/type/:type", vehiclesController.getVehicleByType);

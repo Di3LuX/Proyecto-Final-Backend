@@ -6,7 +6,7 @@ const authBearerMiddleware = require("../middlewares/auth")
 const variousController = require("../controllers/variousController");
 
 //Traer todos los objetos
-router.get("/", variousController.getAll);
+router.get("/article/:id", variousController.getAll);
 
 //Traer objetos por tipo
 router.get("/type/:type", variousController.getVariousByType);

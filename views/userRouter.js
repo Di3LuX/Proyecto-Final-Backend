@@ -13,7 +13,7 @@ router.post("/register", userController.register);
 router.post("/login", userController.login);
 
 //Modificar
-router.put("/modify", authBearerMiddleware, userController.modify);
+router.put("/modify", userController.modify);
 
 /*
 //Ver todos los usuarios
