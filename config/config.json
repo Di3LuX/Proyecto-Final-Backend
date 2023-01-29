@@ -6,7 +6,7 @@
     "database": "railway",
     "host": "containers-us-west-119.railway.app",
     "dialect": "mysql",
-    "port": "8027"
+    "port": 8027
   },
   "test": {
     "username": "root",

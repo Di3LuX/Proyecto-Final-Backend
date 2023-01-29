@@ -13,10 +13,14 @@ let PORT = process.env.YOUR_PORT || process.env.PORT || 3000;
 
 var corsOptions = {
   origin: "*",
+  control: "*",
+  acces: "*",
+  allow: "*",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   preflightContinue: false,
   optionsSuccessStatus: 204
 };
+
 
 
 app.use(morgan('combined', { stream: logger.stream }));
