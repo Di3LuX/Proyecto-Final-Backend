@@ -1,7 +1,7 @@
 
 const express = require("express");
 const router = express.Router();
-const authBearerMiddleware = require("../middlewares/auth")
+const authBearerMiddleware = require("../middlewares/authMiddleware")
 
 const estatesController = require("../controllers/estatesController");
 
@@ -12,7 +12,7 @@ router.get("/article/:id", estatesController.getAll);
 router.get("/type/:type", estatesController.getEstateByType);
 
 //Registrar un nuevo inmueble
-router.post("/", authBearerMiddleware, estatesController.registerEstate);
+router.post("/", estatesController.registerEstate);
 /*
 
 //Borrar un inmueble por su id

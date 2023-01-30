@@ -1,7 +1,8 @@
 
 const express = require("express");
 const router = express.Router();
-const authBearerMiddleware = require("../middlewares/auth")
+const authBearerMiddleware = require("../middlewares/authMiddleware")
+const userRegistred = require("../middlewares/authMiddleware")
 
 const vehiclesController = require("../controllers/vehiclesController");
 

@@ -11,7 +11,9 @@ const vehiclesController = {};
 
 vehiclesController.getAll = (req, res) => {
   sequelize.query('SELECT id, article_id, type, photo, brand, model, manufacturing, registration, conditions, info, createdAt, updatedAt , article_id FROM vehicles AS vehicle')
-    .then(data)
+    .then(data => {
+      res.send(data)
+    })
 }
 
 // Traer vehiculo por tipo:

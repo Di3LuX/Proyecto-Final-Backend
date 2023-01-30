@@ -1,7 +1,8 @@
 
 const express = require("express");
 const router = express.Router();
-const authBearerMiddleware = require("../middlewares/auth")
+const authBearerMiddleware = require("../middlewares/authMiddleware")
+const userRegistred = require("../middlewares/authMiddleware")
 
 const variousController = require("../controllers/variousController");
 
@@ -12,7 +13,7 @@ router.get("/article/:id", variousController.getAll);
 router.get("/type/:type", variousController.getVariousByType);
 
 //Registrar un nuevo objeto
-router.post("/", authBearerMiddleware, variousController.registerVarious);
+router.post("/", variousController.registerVarious);
 /*
 
 //Borrar un objeto por su id
