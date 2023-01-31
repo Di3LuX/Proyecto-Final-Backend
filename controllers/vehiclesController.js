@@ -12,10 +12,28 @@ const vehiclesController = {};
 vehiclesController.getAll = (req, res) => {
   sequelize.query('SELECT id, article_id, type, photo, brand, model, manufacturing, registration, conditions, info, createdAt, updatedAt , article_id FROM vehicles AS vehicle')
     .then(data => {
-      res.send(data)
+      res.send(data[0])
     })
 }
+/*
+vehiclesController.getAll = async (req, res) => {
+  // sequelize.query('SELECT id, article_id, type, photo, brand, model, manufacturing, registration, conditions, info, createdAt, updatedAt , article_id FROM vehicles AS vehicle')
+  //   .then(data => {
+  //     res.send(data)
+    // })
+    // const vehicles = await vehicle.findAll({where: {
 
+    // }});
+    let vehicles = await vehicle.findAll();
+    //   where: {
+    //     type: {
+    //       [Op.like]: "coche",
+    //     },
+    //   },
+    // });
+    res.send(vehicles);
+}
+*/
 // Traer vehiculo por tipo:
 
 vehiclesController.getVehicleByType = async (req, res) => {

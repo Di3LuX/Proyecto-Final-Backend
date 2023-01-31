@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   object.init({
+    article_id: DataTypes.INTEGER,
     type: DataTypes.STRING,
     photo: DataTypes.STRING,
     brand: DataTypes.STRING,

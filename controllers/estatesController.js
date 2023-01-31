@@ -13,7 +13,7 @@ const estatesController = {};
 estatesController.getAll = (req, res) => {
   sequelize.query('SELECT id, article_id, type, photo, location, surface, conditions, info, createdAt, updatedAt , article_id FROM estates AS estate')
     .then(data => {
-      res.send(data)
+      res.send(data[0])
     })
 };
 

@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   estate.init({
+    article_id: DataTypes.INTEGER,
     type: DataTypes.STRING,
     photo: DataTypes.STRING,
     location: DataTypes.STRING,

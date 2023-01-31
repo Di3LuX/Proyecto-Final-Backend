@@ -13,7 +13,7 @@ const variousController = {};
 variousController.getAll = (req, res) => {
   sequelize.query('SELECT id, article_id, type, photo, conditions, info, createdAt, updatedAt , article_id FROM various AS object')
     .then(data => {
-      res.send(data)
+      res.send(data[0])
     })
 };
 
