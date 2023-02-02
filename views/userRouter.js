@@ -15,6 +15,8 @@ router.post("/login", userController.login);
 //Modificar
 router.put("/modify", userController.modify);
 
+//Borrar usuario
+router.delete("/delete", userController.delete);
 /*
 //Ver todos los usuarios
 router.get("/", authBearerMiddleware, userController.findAll);
@@ -22,8 +24,6 @@ router.get("/", authBearerMiddleware, userController.findAll);
 //Buscar usuario por ID
 router.get("/:id", authBearerMiddleware, userController.findCurrentUser);
 
-//Borrar usuario
-router.delete("/delete", authBearerMiddleware, userController.delete);
 */
 
 module.exports = router;

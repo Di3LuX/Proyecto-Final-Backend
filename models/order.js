@@ -30,18 +30,6 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: 'cascade'
 
     },
-
-    artilce_id: {
-      type: DataTypes.INTEGER,
-
-      references: {
-        model: 'articles',
-        key: 'id'
-      },
-      onDelete: 'cascade',
-      onUpdate: 'cascade'
-
-    }
   }, {
     sequelize,
     modelName: 'order',

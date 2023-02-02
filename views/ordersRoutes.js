@@ -6,17 +6,18 @@ const  userRegistred  = require("../middlewares/authMiddleware")
 
 
 
-// // Crear una nueva orden.
-// router.post('/neworder', authBearerMiddleware, ordersController.newOrder);
+// Crear una nueva orden.
+router.post('/neworder', ordersController.newOrder);
 
-// // Traemos el pedido realizado por el usuario
-// router.get('/myorder', authBearerMiddleware, ordersController.myOrder);
+// Traemos el pedido realizado por el usuario
+router.get('/myorder', ordersController.myOrder);
+
+// Devolver una orden
+router.delete('/myorder/return', ordersController.returnOrder);
 
 // // Modificar una orden ya existente.
 // router.put('/modifyorder', authBearerMiddleware, ordersController.modifyOrder);
 
-// // Devolver una orden
-// router.patch('/myorder/return', authBearerMiddleware, ordersController.returnOrder);
 
 // // (Only admin) Traer todas las ordenes 
 // router.get('/allorders/', authBearerMiddleware, ordersController.allOrders);

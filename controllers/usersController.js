@@ -1,8 +1,9 @@
 
-const { user } = require("../models/index");
+const user = require("../models/index");
 const authConfig = require("../config/auth");
 const jsonwebtoken = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const models = require("../models/index");
 
 const userController = {};
 
@@ -10,7 +11,7 @@ const userController = {};
 userController.register = (req, res) => {
 
   let password = bcrypt.hashSync(req.body.password, 10);
-  
+
   user.create({
     username: req.body.username,
     email: req.body.email,
@@ -63,26 +64,40 @@ userController.login = (req, res) => {
 }
 
 userController.modify = async (req, res) => {
-
-  const { authorization } = req.headers;
-  const [jsonwebtoken] = authorization.split(" ");
-  const payload = jsonwebtoken.verify(jsonwebtoken, process.env.JWT_SECRET);
-  if (req.body.email !== payload.email) {
-    throw new Error("Sorry, we couldn't modify your data")
-    return
-  }
   try {
-    let data = req.body;
-    let res = await models.user.update({
-      username: data.username,
-      name: data.name,
-      location: data.location,
-    }, { where: { email: data.email } })
-    res.send("Success in modifying")
+    const userBody = req.body;
+
+    let resp = await models.user.update(
+      {
+        name: userBody.name,
+        username: userBody.username,
+        location: userBody.location,
+      },
+      {
+        where: { name: null },
+      }
+      // {
+      //   where: { email: req.auth.email },
+      // }
+    );
+    res.json({
+      resp,
+      message: "All fine, you are a new one!",
+    });
+    console.log("todo bieeen!")
   } catch (error) {
-    res.send(error)
+    res.json({ error: error.message });
   }
-}
+};
+
+userController.delete = async (req, res) => {
+  const { email } = req.body;
+  let resp = await models.user.destroy({ where: { email: email } });
+  res.json({
+    resp,
+    message: "Bye Bye",
+  });
+};
 
 /* Implementar?
 

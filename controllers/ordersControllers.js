@@ -7,8 +7,51 @@ const { sequelize } = require("../models/index");
 const { orders } = require("../models/index");
 
 
-// Creamos una nueva orden de compra. Hay que pasarle el body, que será el article
+ordersController.newOrder = async (req, res) => {
+  try {
+    let data = req.body;
 
+    let resp = await models.order.create({
+      article_id: data.article_id,
+      user_id: data.user_id,
+    });
+
+    res.send(resp);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+ordersController.myOrder = async (req, res) => {
+  try {
+    let id = req.params.id;
+    let resp = await models.order.findAll({
+      where: { uder_id: id },
+      include: {
+        model: models.order,
+      },
+    });
+    
+    res.send(resp);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+ordersController.returnOrder = async (req, res) => {
+  let id = req.params.id;
+  let resp = await models.order.destroy({
+    where: { user_id: id },
+  });
+
+  if (resp == 1) {
+    res.send("Se ha eliminado el spot");
+  } else {
+    res.send("No se ha podido eliminar el spot");
+  }
+};
+// Creamos una nueva orden de compra. Hay que pasarle el body, que será el article
+/*
 ordersController.newOrder = async (req, res) => {
   const { authorization } = req.headers;
   const [jwt] = authorization.split(" ");
@@ -26,7 +69,8 @@ ordersController.newOrder = async (req, res) => {
     res.send(error);
   }
 }
-
+*/
+/*
 // Mostramos los pedidos hechos por el usuario.
 
 ordersController.myOrder = async (req, res) => {
@@ -65,21 +109,6 @@ ordersController.modifyOrder = async (req, res) => {
   }
 }
 
-ordersController.returnOrder = async (req, res) => {
-  const { authorization } = req.headers;
-  const [strategy, jwt] = authorization.split(" ");
-  const payload = jsonwebtoken.verify(jwt, process.env.JWT_SECRET);
-  let data = req.body;
-  console.log(data);
-  try {
-    let res = await models.order.update({
-      returned: true,
-    }, { where: { user_id: payload.user_id, id_order: data.id_order } })
-    res.send(`The content has been returned`)
-  } catch (error) {
-    res.send(error)
-  }
-}
 
 /*
 ordersController.myVehicleOrder = async (req, res) => {
@@ -136,10 +165,8 @@ ordersController.myVariousOrder = async (req, res) => {
     res.send(error)
   }
 }
-*/
 
 // Mostramos todos los pedidos (solo el admin lo puede hacer)
-
 ordersController.allOrders = async (req, res) => {
   try {
     let res = await models.order.findAll();
@@ -148,4 +175,5 @@ ordersController.allOrders = async (req, res) => {
     res.send(error)
   }
 }
+*/
 module.exports = ordersController;
